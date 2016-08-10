@@ -21,8 +21,7 @@
         }
     ],
     "require":{
-        "sunnysideup/ecommerce": "dev-master",
-        "sunnysideup/ecommerce_product_variation": "dev-master"
+        "sunnysideup/ecommerce": "dev-master"
     },
     "extra": {
         "installer-name": "ecommerce_giftvoucher"
