@@ -205,10 +205,7 @@ class GiftVoucherProductPage_Controller extends Product_Controller
         } elseif ($this->DefaultDescription) {
             $description = $this->DefaultDescription;
         } else {
-            Currency::setCurrencySymbol(EcommercePayment::site_currency());
-            $titleDescriptor = new Currency('titleDescriptor');
-            $titleDescriptor->setValue($amount);
-            $description = _t('GiftVoucherProductPage.PAYMENTFOR', 'Gift Voucher for: ').$titleDescriptor->Nice();
+            //..
         }
 
         //create order item and update it ... if needed
@@ -260,7 +257,8 @@ class GiftVoucherProductPage_Controller extends Product_Controller
     {
         $shoppingCart = ShoppingCart::singleton();
         $orderItem = $shoppingCart->addBuyable($this->dataRecord);
-        $orderItem->setCalculatedTotal($amount);
+        $orderItem->setCustomCalculatedTotal($amount);
+        $orderItem->setCustomDescription($description);
         return $orderItem;
     }
 

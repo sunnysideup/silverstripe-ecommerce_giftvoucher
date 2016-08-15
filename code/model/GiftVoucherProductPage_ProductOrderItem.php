@@ -7,7 +7,8 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem {
 
 
     private static $db = array(
-        'ValueSet' => 'Currency'
+        'ValueSet' => 'Currency',
+        'Description' => 'Varchar(40)'
     );
 
      /* standard SS method.
@@ -75,16 +76,40 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem {
         return $this->ValueSet * $this->Quantity;
     }
 
-    public function setCalculatedTotal($total) {
+    /**
+     * @param float $total
+     * @return this
+     */
+    public function setCustomCalculatedTotal($total) {
         if(!$this->ValueSet) {
             $this->ValueSet = $total;
             $this->write();
         }
+
+        return $this;
+    }
+
+    /**
+     * @param string $description
+     * @return this
+     */
+    public function setCustomDescription($description) {
+        if( ! $this->Description) {
+            $this->Description = $description;
+            $this->write();
+        }
+
+        return $this;
     }
 
     public function getTableSubTitle()
     {
-        return _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ').$this->getTotalAsMoney()->Nice();
+        $array = array();
+        if($this->Description || 1 == 1) {
+            $array[] = Convert::raw2xml($this->Description);
+        }
+        $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ').$this->UnitPriceAsMoney()->Nice();
+        return implode('<br />', $array);
     }
 
 
