@@ -3,12 +3,14 @@
     "type": "silverstripe-module",
     "description": "Provides a Gift Voucher Product for the Silverstripe E-commerce application.",
     "keywords": [
+        "Silverstripe-CMS",
+        "CMS",
+        "Silverstripe",
         "ecommerce",
         "e-commerce",
         "shop",
         "gift voucher",
         "any price",
-        "silverstripe",
         "flexible price"
     ],
     "license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
@@ -20,7 +22,9 @@
         }
     ],
     "require": {
-        "sunnysideup/ecommerce": "dev-master"
+        "sunnysideup/ecommerce": "dev-master",
+        "silverstripe/framework": "~3.1",
+        "silverstripe/cms": "~3.1"
     },
     "extra": {
         "installer-name": "ecommerce_giftvoucher"
