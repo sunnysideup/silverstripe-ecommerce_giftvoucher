@@ -7,6 +7,7 @@
         "Silverstripe",
         "Silverstripe-CMS",
         "Silverstripe-CMS",
+        "Silverstripe-CMS",
         "ecommerce",
         "e-commerce",
         "shop",
@@ -23,7 +24,7 @@
         }
     ],
     "require": {
-        "sunnysideup/ecommerce": "dev-master",
+        "sunnysideup/ecommerce": "*",
         "silverstripe/framework": "~3.1",
         "silverstripe/cms": "~3.1"
     },
