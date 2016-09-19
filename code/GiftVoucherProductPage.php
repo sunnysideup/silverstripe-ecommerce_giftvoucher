@@ -77,7 +77,7 @@ class GiftVoucherProductPage extends Product
     }
 
 
-    function canPurchase(Member $member = NULL, $checkPrice = true)
+    public function canPurchase(Member $member = null, $checkPrice = true)
     {
         return parent::canPurchase($member, false);
     }
@@ -133,7 +133,6 @@ class GiftVoucherProductPage extends Product
 
         return $fields;
     }
-
 }
 
 class GiftVoucherProductPage_Controller extends Product_Controller
@@ -146,7 +145,7 @@ class GiftVoucherProductPage_Controller extends Product_Controller
 
     public function AddNewPriceForm()
     {
-        if($this->canPurchase()) {
+        if ($this->canPurchase()) {
             $requiredFields = array();
             $amount = $this->MinimumAmount;
             if ($newAmount = Session::get('GiftVoucherProductPageAmount')) {
@@ -212,7 +211,7 @@ class GiftVoucherProductPage_Controller extends Product_Controller
         $orderItem = $this->createOrderItem($amount, $description, $data);
         $orderItem = $this->updateOrderItem($orderItem, $data, $form);
 
-        if( ! $orderItem) {
+        if (! $orderItem) {
             $form->sessionMessage(_t('GiftVoucherProductPage.ERROROTHER', 'Sorry, we could not add your entry.'), 'bad');
             $this->redirectBack();
 
@@ -220,7 +219,6 @@ class GiftVoucherProductPage_Controller extends Product_Controller
         }
         $checkoutPage = CheckoutPage::get()->First();
         if ($checkoutPage) {
-
             return $this->redirect($checkoutPage->Link());
         }
         return array();
@@ -272,7 +270,8 @@ class GiftVoucherProductPage_Controller extends Product_Controller
      *
      * @return OrderItem
      */
-    protected function updateOrderItem($orderItem, $data, $form) {
+    protected function updateOrderItem($orderItem, $data, $form)
+    {
         return $orderItem;
     }
 }

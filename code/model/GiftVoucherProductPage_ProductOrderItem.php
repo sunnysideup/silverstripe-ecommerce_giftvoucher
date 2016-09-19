@@ -3,9 +3,8 @@
 
 
 
-class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem {
-
-
+class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
+{
     private static $db = array(
         'ValueSet' => 'Currency',
         'Description' => 'Varchar(40)'
@@ -55,23 +54,23 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem {
         return $this->Config()->get('plural_name');
     }
 
-    function onBeforeWrite()
+    public function onBeforeWrite()
     {
         parent::onBeforeWrite();
         $this->CalculatedTotal = $this->ValueSet;
     }
 
-    function getUnitPrice($recalculate = false)
+    public function getUnitPrice($recalculate = false)
     {
         return $this->ValueSet;
     }
 
-    function getTotal($recalculate = false)
+    public function getTotal($recalculate = false)
     {
         return $this->ValueSet * $this->Quantity;
     }
 
-    function getCalculatedTotal()
+    public function getCalculatedTotal()
     {
         return $this->ValueSet * $this->Quantity;
     }
@@ -80,8 +79,9 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem {
      * @param float $total
      * @return this
      */
-    public function setCustomCalculatedTotal($total) {
-        if(!$this->ValueSet) {
+    public function setCustomCalculatedTotal($total)
+    {
+        if (!$this->ValueSet) {
             $this->ValueSet = $total;
             $this->write();
         }
@@ -93,8 +93,9 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem {
      * @param string $description
      * @return this
      */
-    public function setCustomDescription($description) {
-        if( ! $this->Description) {
+    public function setCustomDescription($description)
+    {
+        if (! $this->Description) {
             $this->Description = $description;
             $this->write();
         }
@@ -105,12 +106,10 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem {
     public function getTableSubTitle()
     {
         $array = array();
-        if($this->Description || 1 == 1) {
+        if ($this->Description || 1 == 1) {
             $array[] = Convert::raw2xml($this->Description);
         }
         $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ').$this->UnitPriceAsMoney()->Nice();
         return implode('<br />', $array);
     }
-
-
 }
