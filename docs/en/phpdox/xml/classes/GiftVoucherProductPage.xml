@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="GiftVoucherProductPage" namespace="" name="GiftVoucherProductPage" abstract="false" final="false" start="7" end="136">
+  <file path="/var/www/temp_modules/silverstripe-gift_voucher/docs/en/phpdox/../../../code" file="GiftVoucherProductPage.php" realpath="/var/www/temp_modules/silverstripe-gift_voucher/code/GiftVoucherProductPage.php" size="10622" time="2016-09-26T03:57:39+00:00" unixtime="1474862259" sha1="f214a241ccabd6b3e1fd7c99f71507e0495c3834" relative="code/GiftVoucherProductPage.php"/>
+  <docblock>
+    <description/>
+    <author value="nicolaas [at] sunnysideup.co.nz"/>
+    <requires value="ecommerce"/>
+    <requires value="ecommerce_product_variation"/>
+  </docblock>
+  <extends full="Product" namespace="" name="Product" unresolved="true"/>
+  <member name="db" type="array" default="" visibility="private" static="true" line="9"/>
+  <member name="defaults" type="array" default="" visibility="private" static="true" line="20"/>
+  <member name="field_labels" type="array" default="" visibility="private" static="true" line="30"/>
+  <member name="field_labels_right" type="array" default="" visibility="private" static="true" line="41"/>
+  <member name="singular_name" type="string" default="'Any Price Product'" visibility="private" static="true" line="52"/>
+  <method name="i18n_singular_name" start="53" end="56" abstract="false" final="false" static="false" visibility="public"/>
+  <member name="plural_name" type="string" default="'Any Price Products'" visibility="private" static="true" line="58"/>
+  <method name="i18n_plural_name" start="59" end="62" abstract="false" final="false" static="false" visibility="public"/>
+  <member name="icon" type="string" default="'ecommerce_giftvoucher/images/treeicons/GiftVoucherProductPage'" visibility="private" static="true" line="64"/>
+  <member name="description" type="string" default="'Generic product that can be used to allow customers to choose a specific amount to pay.'" visibility="private" static="true" line="72">
+    <docblock>
+      <description/>
+      <config/>
+      <var description="Description of the class functionality, typically shown to a user" type="string">when selecting which page type to create. Translated through <link xmlns="http://xml.phpdox.net/src" value="provideI18nEntities()"/>.
+</var>
+    </docblock>
+  </member>
+  <method name="canCreate" start="74" end="77" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="member" byreference="false" type="{unknown}" default="" constant="null"/>
+  </method>
+  <method name="canPurchase" start="80" end="83" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="member" byreference="false" type="{unknown}" default="" constant="null">
+      <type full="Member" namespace="" name="Member"/>
+    </parameter>
+    <parameter name="checkPrice" byreference="false" type="boolean" default="true"/>
+  </method>
+  <member name="defaultClassNameForOrderItem" type="string" default="'GiftVoucherProductPage_ProductOrderItem'" visibility="protected" static="false" line="90">
+    <docblock>
+      <description/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <method name="getCMSFields" start="92" end="135" abstract="false" final="false" static="false" visibility="public">
+    <inline>
+      <comment value="Standard product detail fields" line="116"/>
+      <comment value="Flags for this product which affect it's behaviour on the site" line="126"/>
+    </inline>
+  </method>
+</class>

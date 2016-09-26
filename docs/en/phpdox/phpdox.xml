@@ -6,4 +6,4 @@
       <build engine="html" enabled="true" output="api" />
     </generator>
   </project>
-</php
+</phpdox>
