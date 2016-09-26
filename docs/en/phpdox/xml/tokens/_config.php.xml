@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <source xmlns="http://xml.phpdox.net/token">
-  <file xmlns="http://xml.phpdox.net/src" path="/var/www/temp_modules/silverstripe-gift_voucher/docs/en/phpdox/../../.." file="_config.php" realpath="/var/www/temp_modules/silverstripe-gift_voucher/_config.php" size="59" time="2016-09-26T03:57:39+00:00" unixtime="1474862259" sha1="5786b52c60e96e78d7da3cec1a13929c48ee309e" relative="_config.php"/>
+  <file xmlns="http://xml.phpdox.net/src" path="/var/www/temp_modules/silverstripe-gift_voucher/docs/en/phpdox/../../.." file="_config.php" realpath="/var/www/temp_modules/silverstripe-gift_voucher/_config.php" size="59" time="2016-09-26T04:16:21+00:00" unixtime="1474863381" sha1="5786b52c60e96e78d7da3cec1a13929c48ee309e" relative="_config.php"/>
   <line no="1">
     <token name="T_OPEN_TAG">&lt;?php</token>
   </line>

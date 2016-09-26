@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class xmlns="http://xml.phpdox.net/src" full="GiftVoucherProductPage_Controller" namespace="" name="GiftVoucherProductPage_Controller" abstract="false" final="false" start="138" end="277">
-  <file path="/var/www/temp_modules/silverstripe-gift_voucher/docs/en/phpdox/../../../code" file="GiftVoucherProductPage.php" realpath="/var/www/temp_modules/silverstripe-gift_voucher/code/GiftVoucherProductPage.php" size="10622" time="2016-09-26T03:57:39+00:00" unixtime="1474862259" sha1="f214a241ccabd6b3e1fd7c99f71507e0495c3834" relative="code/GiftVoucherProductPage.php"/>
+  <file path="/var/www/temp_modules/silverstripe-gift_voucher/docs/en/phpdox/../../../code" file="GiftVoucherProductPage.php" realpath="/var/www/temp_modules/silverstripe-gift_voucher/code/GiftVoucherProductPage.php" size="10622" time="2016-09-26T04:16:21+00:00" unixtime="1474863381" sha1="f214a241ccabd6b3e1fd7c99f71507e0495c3834" relative="code/GiftVoucherProductPage.php"/>
   <extends full="Product_Controller" namespace="" name="Product_Controller" unresolved="true"/>
   <member name="allowed_actions" type="array" default="" visibility="private" static="true" line="140"/>
   <method name="AddNewPriceForm" start="146" end="179" abstract="false" final="false" static="false" visibility="public"/>
