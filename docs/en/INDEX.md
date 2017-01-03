@@ -13,9 +13,8 @@
 
 
 
- * [Developer Docs](docs/en/INDEX.md)
- * [User Guide](docs/en/userguide.md)
- * [API](http://ssmods.com/apis/gift_voucher/docs/en/api/)
+
+[Browse the API](docs/en/index.xhtml)
 
 ## Requirements
 
@@ -41,12 +40,10 @@ composer require sunnysideup/gift_voucher
 
 
 
-In the `_config` folder you will find the `gift_voucher.yml.example`
-file that shows options for the configuration of this module.
+In the `_config` folder, you will find `*.yml.example` file(s) that show options for
+the configuration of this module. We recommend that you:
 
-We recommend that you:
-
-  1. copy these `gift_voucher.yml.example` files into your
+  1. copy these `*.yml.example` files into your
 `mysite/_config` folder
   2. remove the .example extension
   3. delete the lines you not care about, and
@@ -57,7 +54,7 @@ We recommend that you:
 
 
 
-We welcome any contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+We welcome any contributions. See [Browse the API](CONTRIBUTING.md) for more details.
 
 ## Paid assistance
 
@@ -69,4 +66,4 @@ You can pay us to create an improved / adapted version of this module for your o
 
 
 
-Sunny Side Up Ltd.
+Sunny Side Up ltd.
