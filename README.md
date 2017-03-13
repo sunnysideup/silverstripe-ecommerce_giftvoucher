@@ -15,7 +15,7 @@
 
  * [Developer Docs](docs/en/INDEX.md)
  * [User Guide](docs/en/userguide.md)
- * [API](http://ssmods.com/apis/gift_voucher/docs/en/api/)
+ * [API Docs](http://docs.ssmods.com/sunnysideup/gift_voucher)
 
 ## Requirements
 
