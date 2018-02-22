@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<index xmlns="http://xml.phpdox.net/src" basedir="/var/www/temp_modules/silverstripe-gift_voucher">
-  <namespace name="">
-    <class name="GiftVoucherProductPage" src="code/GiftVoucherProductPage.php" xml="classes/GiftVoucherProductPage.xml"/>
-    <class name="GiftVoucherProductPage_Controller" src="code/GiftVoucherProductPage.php" xml="classes/GiftVoucherProductPage_Controller.xml"/>
-    <class name="GiftVoucherProductPage_ProductOrderItem" src="code/model/GiftVoucherProductPage_ProductOrderItem.php" xml="classes/GiftVoucherProductPage_ProductOrderItem.xml"/>
-  </namespace>
-</index>
