@@ -10,10 +10,10 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
         'Description' => 'Varchar(40)'
     );
 
-    /* standard SS var.
-     *
-     * @var array
-     */
+    /* standard SS method.
+    *
+    * @var array
+    */
     private static $api_access = array(
         'view' => array(
             'CalculatedTotal',
