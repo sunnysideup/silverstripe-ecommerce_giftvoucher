@@ -10,7 +10,7 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
         'Description' => 'Varchar(40)'
     );
 
-     /* standard SS method.
+    /* standard SS var.
      *
      * @var array
      */
