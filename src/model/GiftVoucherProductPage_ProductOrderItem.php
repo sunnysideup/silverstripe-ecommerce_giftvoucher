@@ -3,7 +3,7 @@
 
 
 
-class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
+class GiftVoucherProductPage_ProductOrderItem extends ProductOrderItem
 {
 
 /**
@@ -119,7 +119,7 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
 
     public function getTableSubTitle()
     {
-        $array = array();
+        $array = [];
         if ($this->Description || 1 == 1) {
             $array[] = Convert::raw2xml($this->Description);
         }

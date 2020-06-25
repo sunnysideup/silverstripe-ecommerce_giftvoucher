@@ -1,6 +1,6 @@
 <?php
 
-class GiftVoucherProductPage_Controller extends Product_Controller
+class GiftVoucherProductPage_Controller extends ProductController
 {
     private static $allowed_actions = array(
         'AddNewPriceForm',
@@ -11,13 +11,31 @@ class GiftVoucherProductPage_Controller extends Product_Controller
     public function AddNewPriceForm()
     {
         if ($this->canPurchase()) {
-            $requiredFields = array();
+            $requiredFields = [];
             $amount = $this->MinimumAmount;
-            if ($newAmount = Session::get('GiftVoucherProductPageAmount')) {
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+            if ($newAmount = Controller::curr()->getRequest()->getSession()->get('GiftVoucherProductPageAmount')) {
                 $amount = $newAmount;
             }
             $description = $this->DefaultDescription;
-            if ($newDescription = Session::get('GiftVoucherProductPageDescription')) {
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+            if ($newDescription = Controller::curr()->getRequest()->getSession()->get('GiftVoucherProductPageDescription')) {
                 $description = $newDescription;
             }
             $fields = FieldList::create();
@@ -60,8 +78,26 @@ class GiftVoucherProductPage_Controller extends Product_Controller
         }
 
         //clear settings from URL
-        Session::clear('GiftVoucherProductPageAmount');
-        Session::clear('GiftVoucherProductPageDescription');
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+        Controller::curr()->getRequest()->getSession()->clear('GiftVoucherProductPageAmount');
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+        Controller::curr()->getRequest()->getSession()->clear('GiftVoucherProductPageDescription');
 
         //create a description
         if (isset($data['Description']) && $data['Description']) {
@@ -92,10 +128,28 @@ class GiftVoucherProductPage_Controller extends Product_Controller
     public function setamount($request)
     {
         if ($amount = floatval($request->param('ID'))) {
-            Session::set('GiftVoucherProductPageAmount', $amount);
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+            Controller::curr()->getRequest()->getSession()->set('GiftVoucherProductPageAmount', $amount);
         }
         if ($description = Convert::raw2sql($request->param('OtherID'))) {
-            Session::set('GiftVoucherProductPageDescription', $_GET['description']);
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: Session:: (case sensitive)
+  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
+            Controller::curr()->getRequest()->getSession()->set('GiftVoucherProductPageDescription', $_GET['description']);
         }
         $this->redirect($this->Link());
 

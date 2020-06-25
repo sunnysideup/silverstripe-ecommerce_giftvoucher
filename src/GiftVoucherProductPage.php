@@ -85,7 +85,7 @@ class GiftVoucherProductPage extends Product
      */
     private static $description = 'Generic product that can be used to allow customers to choose a specific amount to pay.';
 
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return SiteTree::get()->filter(array('ClassName' => 'GiftVoucherProductPage'))->count() ? false : true;
     }
@@ -116,7 +116,25 @@ class GiftVoucherProductPage extends Product
                 TextField::create('DescriptionFieldLabel', $fieldLabels['DescriptionFieldLabel'])->setDescription($fieldLabelsRight['DescriptionFieldLabel']),
                 TextField::create('AmountFieldLabel', $fieldLabels['AmountFieldLabel'])->setDescription($fieldLabelsRight['AmountFieldLabel']),
                 TextField::create('ActionFieldLabel', $fieldLabels['ActionFieldLabel'])->setDescription($fieldLabelsRight['ActionFieldLabel']),
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: NumericField::create (case sensitive)
+  * NEW: NumericField::create (COMPLEX)
+  * EXP: check the number of decimals required and add as ->setScale(2)
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
                 NumericField::create('MinimumAmount', $fieldLabels['MinimumAmount'])->setDescription($fieldLabelsRight['MinimumAmount']),
+
+/**
+  * ### @@@@ START REPLACEMENT @@@@ ###
+  * WHY: automated upgrade
+  * OLD: NumericField::create (case sensitive)
+  * NEW: NumericField::create (COMPLEX)
+  * EXP: check the number of decimals required and add as ->setScale(2)
+  * ### @@@@ STOP REPLACEMENT @@@@ ###
+  */
                 NumericField::create('MaximumAmount', $fieldLabels['MaximumAmount'])->setDescription($fieldLabelsRight['MaximumAmount']),
                 TextField::create('RecommendedAmounts', $fieldLabels['RecommendedAmounts'])->setDescription($fieldLabelsRight['RecommendedAmounts']),
                 CheckboxField::create('CanSetDescription', $fieldLabels['CanSetDescription'])->setDescription($fieldLabelsRight['CanSetDescription']),
