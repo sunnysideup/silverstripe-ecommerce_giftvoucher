@@ -113,3 +113,4 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
         return implode('<br />', $array);
     }
 }
+
