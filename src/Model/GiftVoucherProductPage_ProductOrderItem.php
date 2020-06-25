@@ -2,8 +2,12 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher\Model;
 
-use ProductOrderItem;
-use Convert;
+
+
+use Sunnysideup\Ecommerce\Model\Order;
+use SilverStripe\Core\Convert;
+use Sunnysideup\Ecommerce\Model\ProductOrderItem;
+
 
 
 
@@ -47,7 +51,7 @@ class GiftVoucherProductPage_ProductOrderItem extends ProductOrderItem
             'Version',
             'UnitPrice',
             'Total',
-            'Order',
+            Order::class,
             'InternalItemID',
         ),
     );

@@ -2,17 +2,29 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher;
 
-use ProductController;
-use Controller;
-use FieldList;
-use TextField;
-use CurrencyField;
-use FormAction;
-use RequiredFields;
-use Form;
-use Convert;
-use CheckoutPage;
-use ShoppingCart;
+
+
+
+
+
+
+
+
+
+
+
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\CurrencyField;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\RequiredFields;
+use SilverStripe\Forms\Form;
+use SilverStripe\Core\Convert;
+use Sunnysideup\Ecommerce\Pages\CheckoutPage;
+use Sunnysideup\Ecommerce\Api\ShoppingCart;
+use Sunnysideup\Ecommerce\Pages\ProductController;
+
 
 
 class GiftVoucherProductPage_Controller extends ProductController

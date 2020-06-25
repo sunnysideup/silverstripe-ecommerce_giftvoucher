@@ -2,15 +2,27 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher;
 
-use Product;
-use SiteTree;
-use Member;
-use Config;
-use Director;
-use TextField;
-use NumericField;
-use CheckboxField;
-use LiteralField;
+
+
+
+
+
+
+
+
+
+use SilverStripe\CMS\Model\SiteTree;
+use Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage;
+use SilverStripe\Security\Member;
+use Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPage_ProductOrderItem;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Director;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\NumericField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\LiteralField;
+use Sunnysideup\Ecommerce\Pages\Product;
+
 
 /**
  * @author nicolaas [at] sunnysideup.co.nz
@@ -100,7 +112,7 @@ class GiftVoucherProductPage extends Product
 
     public function canCreate($member = null, $context = [])
     {
-        return SiteTree::get()->filter(array('ClassName' => 'GiftVoucherProductPage'))->count() ? false : true;
+        return SiteTree::get()->filter(array('ClassName' => GiftVoucherProductPage::class))->count() ? false : true;
     }
 
 
@@ -114,13 +126,13 @@ class GiftVoucherProductPage extends Product
     /**
      * @var string
      */
-    protected $defaultClassNameForOrderItem = 'GiftVoucherProductPage_ProductOrderItem';
+    protected $defaultClassNameForOrderItem = GiftVoucherProductPage_ProductOrderItem::class;
 
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
         $fieldLabels = $this->fieldLabels();
-        $fieldLabelsRight = Config::inst()->get('GiftVoucherProductPage', 'field_labels_right');
+        $fieldLabelsRight = Config::inst()->get(GiftVoucherProductPage::class, 'field_labels_right');
         $exampleLink = Director::absoluteURL($this->Link('setamount')).'/123.45/?description='.urlencode('test payment only');
         $exampleLinkExplanation = sprintf(_t('GiftVoucherProductPage.EXPLANATION', '<br /><br /><h5>How to preset the amount?</h5><p>The link <a href="%1$s">%1$s</a> will pre-set the amount to 123.45. You can use this link (and vary the amount as needed) to cutomers to receive payments.</p>.'), $exampleLink);
         $fields->addFieldsToTab(
