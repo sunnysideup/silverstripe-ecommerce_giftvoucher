@@ -1,5 +1,5 @@
 ---
 Name: ecommerce_gift_voucher
-Before: 'mysite/*'
-After: 'framework/*','cms/*','ecommerce/*'
+Before: 'app/*'
+After: ['#coreconfig', '#cmsextensions', '#ecommerce']
 ---

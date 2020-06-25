@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/ecommerce_giftvoucher",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "Provides a Gift Voucher Product for the Silverstripe E-commerce application.",
     "keywords": [
         "Silverstripe-CMS",
@@ -23,10 +23,16 @@
     ],
     "require": {
         "sunnysideup/ecommerce": "*",
-        "silverstripe/framework": "~3.6",
-        "silverstripe/cms": "~3.6"
+        "silverstripe/recipe-cms": "^4.4"
     },
     "extra": {
-        "installer-name": "ecommerce_giftvoucher"
+        "expose": [
+            "client/images"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Sunnysideup\\EcommerceGiftvoucher\\": "src/"
+        }
     }
 }

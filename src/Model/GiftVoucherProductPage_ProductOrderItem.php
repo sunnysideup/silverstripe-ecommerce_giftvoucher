@@ -1,21 +1,34 @@
 <?php
 
+namespace Sunnysideup\EcommerceGiftvoucher\Model;
 
+use SilverStripe\Core\Convert;
+use Sunnysideup\Ecommerce\Model\Order;
+use Sunnysideup\Ecommerce\Model\ProductOrderItem;
 
-
-class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
+class GiftVoucherProductPage_ProductOrderItem extends ProductOrderItem
 {
-    private static $db = array(
+    /**
+     * ### @@@@ START REPLACEMENT @@@@ ###
+     * OLD: private static $db (case sensitive)
+     * NEW:
+    private static $db (COMPLEX)
+     * EXP: Check that is class indeed extends DataObject and that it is not a data-extension!
+     * ### @@@@ STOP REPLACEMENT @@@@ ###
+     */
+    private static $table_name = 'GiftVoucherProductPage_ProductOrderItem';
+
+    private static $db = [
         'ValueSet' => 'Currency',
-        'Description' => 'Varchar(40)'
-    );
+        'Description' => 'Varchar(40)',
+    ];
 
     /* standard SS method.
     *
     * @var array
     */
-    private static $api_access = array(
-        'view' => array(
+    private static $api_access = [
+        'view' => [
             'CalculatedTotal',
             'TableTitle',
             'TableSubTitleNOHTML',
@@ -27,10 +40,10 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
             'Version',
             'UnitPrice',
             'Total',
-            'Order',
+            Order::class,
             'InternalItemID',
-        ),
-    );
+        ],
+    ];
 
     /**
      * Standard SS variable.
@@ -38,10 +51,6 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
      * @var string
      */
     private static $singular_name = 'Order for Gift Item';
-    public function i18n_singular_name()
-    {
-        return $this->Config()->get('singular_name');
-    }
 
     /**
      * Standard SS variable.
@@ -49,6 +58,12 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
      * @var string
      */
     private static $plural_name = 'Orders for Gift Item';
+
+    public function i18n_singular_name()
+    {
+        return $this->Config()->get('singular_name');
+    }
+
     public function i18n_plural_name()
     {
         return $this->Config()->get('plural_name');
@@ -77,11 +92,11 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
 
     /**
      * @param float $total
-     * @return this
+     * @return $this
      */
     public function setCustomCalculatedTotal($total)
     {
-        if (!$this->ValueSet) {
+        if (! $this->ValueSet) {
             $this->ValueSet = $total;
             $this->write();
         }
@@ -91,7 +106,7 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
 
     /**
      * @param string $description
-     * @return this
+     * @return $this
      */
     public function setCustomDescription($description)
     {
@@ -105,11 +120,11 @@ class GiftVoucherProductPage_ProductOrderItem extends Product_OrderItem
 
     public function getTableSubTitle()
     {
-        $array = array();
-        if ($this->Description || 1 == 1) {
+        $array = [];
+        if ($this->Description || 1 === 1) {
             $array[] = Convert::raw2xml($this->Description);
         }
-        $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ').$this->UnitPriceAsMoney()->Nice();
+        $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ') . $this->UnitPriceAsMoney()->Nice();
         return implode('<br />', $array);
     }
 }
