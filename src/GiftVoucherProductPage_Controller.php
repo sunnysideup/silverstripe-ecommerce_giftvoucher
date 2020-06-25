@@ -1,5 +1,20 @@
 <?php
 
+namespace Sunnysideup\EcommerceGiftvoucher;
+
+use ProductController;
+use Controller;
+use FieldList;
+use TextField;
+use CurrencyField;
+use FormAction;
+use RequiredFields;
+use Form;
+use Convert;
+use CheckoutPage;
+use ShoppingCart;
+
+
 class GiftVoucherProductPage_Controller extends ProductController
 {
     private static $allowed_actions = array(

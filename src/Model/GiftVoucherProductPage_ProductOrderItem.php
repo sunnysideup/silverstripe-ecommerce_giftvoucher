@@ -1,5 +1,11 @@
 <?php
 
+namespace Sunnysideup\EcommerceGiftvoucher\Model;
+
+use ProductOrderItem;
+use Convert;
+
+
 
 
 
