@@ -2,38 +2,25 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher;
 
-
-
-
-
-
-
-
-
-
-
-
 use SilverStripe\Control\Controller;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\TextField;
+use SilverStripe\Core\Convert;
 use SilverStripe\Forms\CurrencyField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
 use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\RequiredFields;
-use SilverStripe\Forms\Form;
-use SilverStripe\Core\Convert;
-use Sunnysideup\Ecommerce\Pages\CheckoutPage;
+use SilverStripe\Forms\TextField;
 use Sunnysideup\Ecommerce\Api\ShoppingCart;
+use Sunnysideup\Ecommerce\Pages\CheckoutPage;
 use Sunnysideup\Ecommerce\Pages\ProductController;
-
-
 
 class GiftVoucherProductPage_Controller extends ProductController
 {
-    private static $allowed_actions = array(
+    private static $allowed_actions = [
         'AddNewPriceForm',
         'doaddnewpriceform',
-        'setamount'
-    );
+        'setamount',
+    ];
 
     public function AddNewPriceForm()
     {
@@ -41,27 +28,27 @@ class GiftVoucherProductPage_Controller extends ProductController
             $requiredFields = [];
             $amount = $this->MinimumAmount;
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+            /**
+             * ### @@@@ START REPLACEMENT @@@@ ###
+             * WHY: automated upgrade
+             * OLD: Session:: (case sensitive)
+             * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+             * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+             * ### @@@@ STOP REPLACEMENT @@@@ ###
+             */
             if ($newAmount = Controller::curr()->getRequest()->getSession()->get('GiftVoucherProductPageAmount')) {
                 $amount = $newAmount;
             }
             $description = $this->DefaultDescription;
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+            /**
+             * ### @@@@ START REPLACEMENT @@@@ ###
+             * WHY: automated upgrade
+             * OLD: Session:: (case sensitive)
+             * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+             * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+             * ### @@@@ STOP REPLACEMENT @@@@ ###
+             */
             if ($newDescription = Controller::curr()->getRequest()->getSession()->get('GiftVoucherProductPageDescription')) {
                 $description = $newDescription;
             }
@@ -106,24 +93,24 @@ class GiftVoucherProductPage_Controller extends ProductController
 
         //clear settings from URL
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+        /**
+         * ### @@@@ START REPLACEMENT @@@@ ###
+         * WHY: automated upgrade
+         * OLD: Session:: (case sensitive)
+         * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+         * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+         * ### @@@@ STOP REPLACEMENT @@@@ ###
+         */
         Controller::curr()->getRequest()->getSession()->clear('GiftVoucherProductPageAmount');
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+        /**
+         * ### @@@@ START REPLACEMENT @@@@ ###
+         * WHY: automated upgrade
+         * OLD: Session:: (case sensitive)
+         * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+         * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+         * ### @@@@ STOP REPLACEMENT @@@@ ###
+         */
         Controller::curr()->getRequest()->getSession()->clear('GiftVoucherProductPageDescription');
 
         //create a description
@@ -131,9 +118,8 @@ class GiftVoucherProductPage_Controller extends ProductController
             $description = Convert::raw2sql($data['Description']);
         } elseif ($this->DefaultDescription) {
             $description = $this->DefaultDescription;
-        } else {
-            //..
         }
+        //..
 
         //create order item and update it ... if needed
         $orderItem = $this->createOrderItem($amount, $description, $data);
@@ -149,38 +135,38 @@ class GiftVoucherProductPage_Controller extends ProductController
         if ($checkoutPage) {
             return $this->redirect($checkoutPage->Link());
         }
-        return array();
+        return [];
     }
 
     public function setamount($request)
     {
         if ($amount = floatval($request->param('ID'))) {
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+            /**
+             * ### @@@@ START REPLACEMENT @@@@ ###
+             * WHY: automated upgrade
+             * OLD: Session:: (case sensitive)
+             * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+             * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+             * ### @@@@ STOP REPLACEMENT @@@@ ###
+             */
             Controller::curr()->getRequest()->getSession()->set('GiftVoucherProductPageAmount', $amount);
         }
         if ($description = Convert::raw2sql($request->param('OtherID'))) {
 
-/**
-  * ### @@@@ START REPLACEMENT @@@@ ###
-  * WHY: automated upgrade
-  * OLD: Session:: (case sensitive)
-  * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
-  * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly. 
-  * ### @@@@ STOP REPLACEMENT @@@@ ###
-  */
+            /**
+             * ### @@@@ START REPLACEMENT @@@@ ###
+             * WHY: automated upgrade
+             * OLD: Session:: (case sensitive)
+             * NEW: Controller::curr()->getRequest()->getSession()-> (COMPLEX)
+             * EXP: If THIS is a controller than you can write: $this->getRequest(). You can also try to access the HTTPRequest directly.
+             * ### @@@@ STOP REPLACEMENT @@@@ ###
+             */
             Controller::curr()->getRequest()->getSession()->set('GiftVoucherProductPageDescription', $_GET['description']);
         }
         $this->redirect($this->Link());
 
-        return array();
+        return [];
     }
 
     /**
@@ -194,7 +180,7 @@ class GiftVoucherProductPage_Controller extends ProductController
     }
 
     /**
-     * @param Variation (optional) $variation
+     * @param Variation (optional) $amount
      * @return OrderItem | null
      */
     protected function createOrderItem($amount, $description, $data)
