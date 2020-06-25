@@ -1,6 +1,6 @@
 {
     "name": "sunnysideup/ecommerce_giftvoucher",
-    "type": "silverstripe-module",
+    "type": "silverstripe-vendormodule",
     "description": "Provides a Gift Voucher Product for the Silverstripe E-commerce application.",
     "keywords": [
         "Silverstripe-CMS",
