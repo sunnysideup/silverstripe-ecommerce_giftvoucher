@@ -6,16 +6,8 @@ use SilverStripe\Core\Convert;
 use Sunnysideup\Ecommerce\Model\Order;
 use Sunnysideup\Ecommerce\Model\ProductOrderItem;
 
-class GiftVoucherProductPage_ProductOrderItem extends ProductOrderItem
+class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
 {
-    /**
-     * ### @@@@ START REPLACEMENT @@@@ ###
-     * OLD: private static $db (case sensitive)
-     * NEW:
-    private static $db (COMPLEX)
-     * EXP: Check that is class indeed extends DataObject and that it is not a data-extension!
-     * ### @@@@ STOP REPLACEMENT @@@@ ###
-     */
     private static $table_name = 'GiftVoucherProductPage_ProductOrderItem';
 
     private static $db = [

@@ -11,7 +11,7 @@ use SilverStripe\Forms\NumericField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
 use Sunnysideup\Ecommerce\Pages\Product;
-use Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPage_ProductOrderItem;
+use Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPageProductOrderItem;
 
 /**
  * @author nicolaas [at] sunnysideup.co.nz
@@ -23,16 +23,8 @@ class GiftVoucherProductPage extends Product
     /**
      * @var string
      */
-    protected $defaultClassNameForOrderItem = GiftVoucherProductPage_ProductOrderItem::class;
+    protected $defaultClassNameForOrderItem = GiftVoucherProductPageProductOrderItem::class;
 
-    /**
-     * ### @@@@ START REPLACEMENT @@@@ ###
-     * OLD: private static $db (case sensitive)
-     * NEW:
-    private static $db (COMPLEX)
-     * EXP: Check that is class indeed extends DataObject and that it is not a data-extension!
-     * ### @@@@ STOP REPLACEMENT @@@@ ###
-     */
     private static $table_name = 'GiftVoucherProductPage';
 
     private static $db = [
@@ -126,25 +118,8 @@ class GiftVoucherProductPage extends Product
                 TextField::create('AmountFieldLabel', $fieldLabels['AmountFieldLabel'])->setDescription($fieldLabelsRight['AmountFieldLabel']),
                 TextField::create('ActionFieldLabel', $fieldLabels['ActionFieldLabel'])->setDescription($fieldLabelsRight['ActionFieldLabel']),
 
-                /**
-                 * ### @@@@ START REPLACEMENT @@@@ ###
-                 * WHY: automated upgrade
-                 * OLD: NumericField::create (case sensitive)
-                 * NEW: NumericField::create (COMPLEX)
-                 * EXP: check the number of decimals required and add as ->setScale(2)
-                 * ### @@@@ STOP REPLACEMENT @@@@ ###
-                 */
-                NumericField::create('MinimumAmount', $fieldLabels['MinimumAmount'])->setDescription($fieldLabelsRight['MinimumAmount']),
-
-                /**
-                 * ### @@@@ START REPLACEMENT @@@@ ###
-                 * WHY: automated upgrade
-                 * OLD: NumericField::create (case sensitive)
-                 * NEW: NumericField::create (COMPLEX)
-                 * EXP: check the number of decimals required and add as ->setScale(2)
-                 * ### @@@@ STOP REPLACEMENT @@@@ ###
-                 */
-                NumericField::create('MaximumAmount', $fieldLabels['MaximumAmount'])->setDescription($fieldLabelsRight['MaximumAmount']),
+                NumericField::create('MinimumAmount', $fieldLabels['MinimumAmount'])->setScale(2)->setDescription($fieldLabelsRight['MinimumAmount']),
+                NumericField::create('MaximumAmount', $fieldLabels['MaximumAmount'])->setScale(2)->setDescription($fieldLabelsRight['MaximumAmount']),
                 TextField::create('RecommendedAmounts', $fieldLabels['RecommendedAmounts'])->setDescription($fieldLabelsRight['RecommendedAmounts']),
                 CheckboxField::create('CanSetDescription', $fieldLabels['CanSetDescription'])->setDescription($fieldLabelsRight['CanSetDescription']),
                 TextField::create('DefaultDescription', $fieldLabels['DefaultDescription'])->setDescription($fieldLabelsRight['DefaultDescription']),

@@ -1,4 +1,4 @@
 mappings:
-  GiftVoucherProductPage_Controller: Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage_Controller
+  GiftVoucherProductPage_Controller: Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPageController
   GiftVoucherProductPage: Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage
-  GiftVoucherProductPage_ProductOrderItem: Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPage_ProductOrderItem
+  GiftVoucherProductPage_ProductOrderItem: Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPageProductOrderItem
