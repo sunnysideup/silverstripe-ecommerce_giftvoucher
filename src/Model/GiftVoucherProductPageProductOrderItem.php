@@ -7,7 +7,7 @@ use Sunnysideup\Ecommerce\Model\ProductOrderItem;
 
 class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
 {
-    private static $table_name = 'GiftVoucherProductPage_ProductOrderItem';
+    private static $table_name = 'GiftVoucherProductPageProductOrderItem';
 
     private static $db = [
         'ValueSet' => 'Currency',
