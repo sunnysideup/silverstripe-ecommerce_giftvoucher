@@ -2,7 +2,6 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher;
 
-use SilverStripe\Control\Controller;
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\CurrencyField;
 use SilverStripe\Forms\FieldList;
