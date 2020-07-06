@@ -128,7 +128,7 @@ class GiftVoucherProductPageController extends ProductController
 
     /**
      * @param Variation (optional) $amount
-     * @return OrderItem | null
+     * @return \Sunnysideup\Ecommerce\Model\OrderItem | null
      */
     protected function createOrderItem($amount, $description, $data)
     {
@@ -143,11 +143,11 @@ class GiftVoucherProductPageController extends ProductController
      * you can add this method to a class extending
      * GiftVoucherProductPageController so that you can do something with the OrderItem
      *
-     * @param OrderItem $orderItem
+     * @param \Sunnysideup\Ecommerce\Model\OrderItem $orderItem
      * @param array $data
      * @param Form $form
      *
-     * @return OrderItem
+     * @return \Sunnysideup\Ecommerce\Model\OrderItem
      */
     protected function updateOrderItem($orderItem, $data, $form)
     {
