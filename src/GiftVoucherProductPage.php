@@ -74,7 +74,7 @@ class GiftVoucherProductPage extends Product
 
     private static $plural_name = 'Any Price Products';
 
-    private static $icon = 'ecommerce_giftvoucher/images/treeicons/GiftVoucherProductPage';
+    private static $icon = 'sunnysideup/ecommerce_giftvoucher: client/images/treeicons/GiftVoucherProductPage-file.gif';
 
     /**
      * @config
