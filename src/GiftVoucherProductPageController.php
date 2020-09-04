@@ -128,7 +128,7 @@ class GiftVoucherProductPageController extends ProductController
 
     /**
      * @param Variation (optional) $amount
-     * @return \Sunnysideup\Ecommerce\Model\OrderItem | null
+     * @return \Sunnysideup\Ecommerce\Model\OrderItem|null
      */
     protected function createOrderItem($amount, $description, $data)
     {
