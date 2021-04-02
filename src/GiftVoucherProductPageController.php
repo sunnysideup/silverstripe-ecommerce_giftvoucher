@@ -123,7 +123,7 @@ class GiftVoucherProductPageController extends ProductController
      */
     protected function parseFloat($floatString)
     {
-        return preg_replace('/([^0-9\\.])/i', '', $floatString);
+        return preg_replace('#([^0-9\.])#i', '', $floatString);
     }
 
     /**

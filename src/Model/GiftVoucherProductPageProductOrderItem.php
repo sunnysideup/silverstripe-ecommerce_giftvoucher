@@ -60,12 +60,6 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
         return $this->Config()->get('plural_name');
     }
 
-    public function onBeforeWrite()
-    {
-        parent::onBeforeWrite();
-        $this->CalculatedTotal = $this->ValueSet;
-    }
-
     public function getUnitPrice($recalculate = false)
     {
         return $this->ValueSet;
@@ -117,5 +111,11 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
         }
         $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ') . $this->UnitPriceAsMoney()->Nice();
         return implode('<br />', $array);
+    }
+
+    protected function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        $this->CalculatedTotal = $this->ValueSet;
     }
 }
