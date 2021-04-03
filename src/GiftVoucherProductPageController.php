@@ -13,6 +13,8 @@ use Sunnysideup\Ecommerce\Api\ShoppingCart;
 use Sunnysideup\Ecommerce\Pages\CheckoutPage;
 use Sunnysideup\Ecommerce\Pages\ProductController;
 
+use Sunnysideup\Ecommerce\Model\OrderItem;
+
 class GiftVoucherProductPageController extends ProductController
 {
     private static $allowed_actions = [
@@ -127,12 +129,16 @@ class GiftVoucherProductPageController extends ProductController
     }
 
     /**
-     * @param Variation (optional) $amount
-     * @return \Sunnysideup\Ecommerce\Model\OrderItem|null
+     * @param float $amount
+     * @param string $description
+     * @param array $data
+     *
+     * @return OrderItem|null
      */
-    protected function createOrderItem($amount, $description, $data)
+    protected function createOrderItem($amount, $description, $data = [])
     {
         $shoppingCart = ShoppingCart::singleton();
+        /** @var OrderItem $orderItem */
         $orderItem = $shoppingCart->addBuyable($this->dataRecord);
         $orderItem->setCustomCalculatedTotal($amount);
         $orderItem->setCustomDescription($description);
@@ -143,11 +149,11 @@ class GiftVoucherProductPageController extends ProductController
      * you can add this method to a class extending
      * GiftVoucherProductPageController so that you can do something with the OrderItem
      *
-     * @param \Sunnysideup\Ecommerce\Model\OrderItem $orderItem
-     * @param array $data
-     * @param Form $form
+     * @param OrderItem    $orderItem
+     * @param array        $data
+     * @param Form         $form
      *
-     * @return \Sunnysideup\Ecommerce\Model\OrderItem
+     * @return OrderItem
      */
     protected function updateOrderItem($orderItem, $data, $form)
     {
