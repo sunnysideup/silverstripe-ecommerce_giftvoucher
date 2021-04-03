@@ -12,7 +12,6 @@ use SilverStripe\Forms\TextField;
 use Sunnysideup\Ecommerce\Api\ShoppingCart;
 use Sunnysideup\Ecommerce\Model\OrderItem;
 use Sunnysideup\Ecommerce\Pages\CheckoutPage;
-
 use Sunnysideup\Ecommerce\Pages\ProductController;
 
 class GiftVoucherProductPageController extends ProductController
@@ -67,7 +66,8 @@ class GiftVoucherProductPageController extends ProductController
             $this->redirectBack();
 
             return;
-        } elseif ($this->MaximumAmount > 0 && ($amount > $this->MaximumAmount)) {
+        }
+        if ($this->MaximumAmount > 0 && ($amount > $this->MaximumAmount)) {
             $form->sessionMessage(_t('GiftVoucherProductPage.ERRORINFORMTOOHIGH', 'Please enter a lower amount.'), 'bad');
             $this->redirectBack();
 
@@ -102,6 +102,7 @@ class GiftVoucherProductPageController extends ProductController
         if ($checkoutPage) {
             return $this->redirect($checkoutPage->Link());
         }
+
         return [];
     }
 
@@ -121,6 +122,8 @@ class GiftVoucherProductPageController extends ProductController
     /**
      * clean up the amount, we may improve this in the future.
      *
+     * @param mixed $floatString
+     *
      * @return float
      */
     protected function parseFloat($floatString)
@@ -129,11 +132,11 @@ class GiftVoucherProductPageController extends ProductController
     }
 
     /**
-     * @param float $amount
+     * @param float  $amount
      * @param string $description
-     * @param array $data
+     * @param array  $data
      *
-     * @return OrderItem|null
+     * @return null|OrderItem
      */
     protected function createOrderItem($amount, $description, $data = [])
     {
@@ -142,16 +145,17 @@ class GiftVoucherProductPageController extends ProductController
         $orderItem = $shoppingCart->addBuyable($this->dataRecord);
         $orderItem->setCustomCalculatedTotal($amount);
         $orderItem->setCustomDescription($description);
+
         return $orderItem;
     }
 
     /**
      * you can add this method to a class extending
-     * GiftVoucherProductPageController so that you can do something with the OrderItem
+     * GiftVoucherProductPageController so that you can do something with the OrderItem.
      *
-     * @param OrderItem    $orderItem
-     * @param array        $data
-     * @param Form         $form
+     * @param OrderItem $orderItem
+     * @param array     $data
+     * @param Form      $form
      *
      * @return OrderItem
      */

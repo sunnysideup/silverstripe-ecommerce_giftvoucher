@@ -77,6 +77,7 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
 
     /**
      * @param float $total
+     *
      * @return $this
      */
     public function setCustomCalculatedTotal($total)
@@ -91,6 +92,7 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
 
     /**
      * @param string $description
+     *
      * @return $this
      */
     public function setCustomDescription($description)
@@ -110,6 +112,7 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
             $array[] = Convert::raw2xml($this->Description);
         }
         $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ') . $this->UnitPriceAsMoney()->Nice();
+
         return implode('<br />', $array);
     }
 
