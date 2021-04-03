@@ -10,10 +10,10 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use Sunnysideup\Ecommerce\Api\ShoppingCart;
-use Sunnysideup\Ecommerce\Pages\CheckoutPage;
-use Sunnysideup\Ecommerce\Pages\ProductController;
-
 use Sunnysideup\Ecommerce\Model\OrderItem;
+use Sunnysideup\Ecommerce\Pages\CheckoutPage;
+
+use Sunnysideup\Ecommerce\Pages\ProductController;
 
 class GiftVoucherProductPageController extends ProductController
 {
