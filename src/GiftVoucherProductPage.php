@@ -96,7 +96,7 @@ class GiftVoucherProductPage extends Product
 
     public function canCreate($member = null, $context = [])
     {
-        return ! (bool) SiteTree::get()->filter(['ClassName' => GiftVoucherProductPage::class])->count();
+        return ! (bool) SiteTree::get()->filter(['ClassName' => GiftVoucherProductPage::class])->exists();
     }
 
     public function canPurchase(Member $member = null, $checkPrice = true)
