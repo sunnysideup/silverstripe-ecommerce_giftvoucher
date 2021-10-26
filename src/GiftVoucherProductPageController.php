@@ -27,11 +27,13 @@ class GiftVoucherProductPageController extends ProductController
         if ($this->canPurchase()) {
             $requiredFields = [];
             $amount = $this->MinimumAmount;
-            if ($newAmount = $this->getRequest()->getSession()->get('GiftVoucherProductPageAmount')) {
+            $newAmount = $this->getRequest()->getSession()->get('GiftVoucherProductPageAmount');
+            if ($newAmount) {
                 $amount = $newAmount;
             }
             $description = $this->DefaultDescription;
-            if ($newDescription = $this->getRequest()->getSession()->get('GiftVoucherProductPageDescription')) {
+            $newDescription = $this->getRequest()->getSession()->get('GiftVoucherProductPageDescription');
+            if ($newDescription) {
                 $description = $newDescription;
             }
             $fields = FieldList::create();
@@ -108,10 +110,12 @@ class GiftVoucherProductPageController extends ProductController
 
     public function setamount($request)
     {
-        if ($amount = floatval($request->param('ID'))) {
+        $description = Convert::raw2sql($request->param('OtherID'));
+        $amount = floatval($request->param('ID'));
+        if ($amount) {
             $this->getRequest()->getSession()->set('GiftVoucherProductPageAmount', $amount);
         }
-        if ($description = Convert::raw2sql($request->param('OtherID'))) {
+        if ($description) {
             $this->getRequest()->getSession()->set('GiftVoucherProductPageDescription', $description);
         }
         $this->redirect($this->Link());
