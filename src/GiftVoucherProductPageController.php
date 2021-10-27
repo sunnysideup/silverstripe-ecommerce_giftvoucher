@@ -110,11 +110,11 @@ class GiftVoucherProductPageController extends ProductController
 
     public function setamount($request)
     {
-        $description = Convert::raw2sql($request->param('OtherID'));
         $amount = floatval($request->param('ID'));
         if ($amount) {
             $this->getRequest()->getSession()->set('GiftVoucherProductPageAmount', $amount);
         }
+        $description = Convert::raw2sql($request->param('OtherID'));
         if ($description) {
             $this->getRequest()->getSession()->set('GiftVoucherProductPageDescription', $description);
         }
