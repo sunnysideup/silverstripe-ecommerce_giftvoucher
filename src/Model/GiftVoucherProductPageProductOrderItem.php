@@ -5,6 +5,12 @@ namespace Sunnysideup\EcommerceGiftvoucher\Model;
 use SilverStripe\Core\Convert;
 use Sunnysideup\Ecommerce\Model\ProductOrderItem;
 
+/**
+ * Class \Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPageProductOrderItem
+ *
+ * @property float $ValueSet
+ * @property string $Description
+ */
 class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
 {
     private static $table_name = 'GiftVoucherProductPageProductOrderItem';

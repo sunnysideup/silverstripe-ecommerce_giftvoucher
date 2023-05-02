@@ -14,6 +14,13 @@ use Sunnysideup\Ecommerce\Model\OrderItem;
 use Sunnysideup\Ecommerce\Pages\CheckoutPage;
 use Sunnysideup\Ecommerce\Pages\ProductController;
 
+/**
+ * Class \Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPageController
+ *
+ * @property \Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage $dataRecord
+ * @method \Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage data()
+ * @mixin \Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage
+ */
 class GiftVoucherProductPageController extends ProductController
 {
     private static $allowed_actions = [

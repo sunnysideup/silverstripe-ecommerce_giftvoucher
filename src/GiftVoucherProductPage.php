@@ -14,9 +14,16 @@ use Sunnysideup\Ecommerce\Pages\Product;
 use Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPageProductOrderItem;
 
 /**
- * @author nicolaas [at] sunnysideup.co.nz
- * @requires ecommerce
- * @requires ecommerce_product_variation
+ * Class \Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage
+ *
+ * @property string $DescriptionFieldLabel
+ * @property string $AmountFieldLabel
+ * @property string $ActionFieldLabel
+ * @property float $MinimumAmount
+ * @property float $MaximumAmount
+ * @property string $RecommendedAmounts
+ * @property bool $CanSetDescription
+ * @property string $DefaultDescription
  */
 class GiftVoucherProductPage extends Product
 {
