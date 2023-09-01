@@ -53,6 +53,7 @@ class GiftVoucherProductPage extends Product
         'MaximumAmount' => 100,
         'AllowPurchase' => false,
         'Price' => 0,
+        'HasPhysicalDispatch' => 0,
     ];
 
     private static $field_labels = [
