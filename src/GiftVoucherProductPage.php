@@ -144,6 +144,7 @@ class GiftVoucherProductPage extends Product
                 'Weight',
                 'Price',
                 'Model',
+                'HasPhysicalDispatch',
             ]
         );
 
