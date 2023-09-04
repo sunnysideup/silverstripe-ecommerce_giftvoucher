@@ -113,13 +113,18 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
 
     public function getTableSubTitle(): string
     {
+        if($this->priceHasBeenFixed()) {
+            if($this->TableSubTitleFixed) {
+                return (string) $this->TableSubTitleFixed;
+            }
+        }
         $array = [];
         if ($this->Description || 1 === 1) {
             $array[] = Convert::raw2xml($this->Description);
         }
         $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ') . $this->UnitPriceAsMoney()->Nice();
 
-        return implode('<br />', $array);
+        return (string) implode('<br />', $array);
     }
 
     protected function onBeforeWrite()
