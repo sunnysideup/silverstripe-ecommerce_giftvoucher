@@ -111,7 +111,7 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
         return $this;
     }
 
-    public function getTableSubTitle()
+    public function getTableSubTitle(): string
     {
         $array = [];
         if ($this->Description || 1 === 1) {
