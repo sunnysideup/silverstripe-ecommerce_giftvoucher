@@ -12,6 +12,7 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
 use Sunnysideup\Ecommerce\Pages\Product;
 use Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPageProductOrderItem;
+use Page;
 
 /**
  * Class \Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage
@@ -43,6 +44,7 @@ class GiftVoucherProductPage extends Product
         'RecommendedAmounts' => 'Varchar(255)',
         'CanSetDescription' => 'Boolean',
         'DefaultDescription' => 'Varchar(255)',
+        'AlwaysHideFromSearchAndMenus' => 'Boolean(1)',
     ];
 
     private static $defaults = [
@@ -104,7 +106,7 @@ class GiftVoucherProductPage extends Product
 
     public function canCreate($member = null, $context = [])
     {
-        return ! (bool) SiteTree::get()->filter(['ClassName' => GiftVoucherProductPage::class])->exists();
+        return !(bool) SiteTree::get()->filter(['ClassName' => GiftVoucherProductPage::class])->exists();
     }
 
     public function canPurchase(Member $member = null, $checkPrice = true)
@@ -134,7 +136,7 @@ class GiftVoucherProductPage extends Product
                 LiteralField::create('ExampleLinkExplanation', $exampleLinkExplanation),
             ]
         );
-        if (! $this->CanSetDescription) {
+        if (!$this->CanSetDescription) {
             $fields->removeByName('DescriptionFieldLabel');
         }
         // Standard product detail fields
@@ -158,4 +160,31 @@ class GiftVoucherProductPage extends Product
 
         return $fields;
     }
+
+    public function getSettingsFields()
+    {
+        $fields = parent::getSettingsFields();
+        $fields->addFieldsToTab(
+            'Root.Settings',
+            [
+                CheckboxField::create('AlwaysHideFromSearchAndMenus', _t('GiftVoucherProductPage.ALWAYSHIDEFROMSEARCHANDMENUS', 'Always hide from search and menus')),
+            ],
+            'Visibility'
+        );
+        if($this->AlwaysHideFromSearchAndMenus) {
+            $fields->removeByName('ShowInMenus');
+            $fields->removeByName('ShowInSearch');
+        }
+        return $fields;
+    }
+
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        if($this->AlwaysHideFromSearchAndMenus) {
+            $this->ShowInMenus = false;
+            $this->ShowInSearch = false;
+        }
+    }
+
 }
