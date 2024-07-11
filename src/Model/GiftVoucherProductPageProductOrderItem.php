@@ -17,7 +17,7 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
 
     private static $db = [
         'ValueSet' => 'Currency',
-        'Description' => 'Varchar(40)',
+        'Description' => 'Varchar(200)',
     ];
 
     /* standard SS method.
@@ -118,13 +118,7 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
                 return (string) $this->TableSubTitleFixed;
             }
         }
-        $array = [];
-        if ($this->Description || 1 === 1) {
-            $array[] = Convert::raw2xml($this->Description);
-        }
-        $array[] = _t('GIFTVOUCHERPRODUCTPAGE.Value', 'Value: ') . $this->UnitPriceAsMoney()->Nice();
-
-        return (string) implode('<br />', $array);
+        return (string) $this->Description;
     }
 
     protected function onBeforeWrite()

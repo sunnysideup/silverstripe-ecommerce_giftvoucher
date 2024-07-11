@@ -25,6 +25,7 @@ use Page;
  * @property string $RecommendedAmounts
  * @property bool $CanSetDescription
  * @property string $DefaultDescription
+ * @property bool $AlwaysHideFromSearchAndMenus
  */
 class GiftVoucherProductPage extends Product
 {
@@ -106,7 +107,7 @@ class GiftVoucherProductPage extends Product
 
     public function canCreate($member = null, $context = [])
     {
-        return !(bool) SiteTree::get()->filter(['ClassName' => GiftVoucherProductPage::class])->exists();
+        return !(bool) SiteTree::get()->filter(['ClassName' => static::class])->exists();
     }
 
     public function canPurchase(Member $member = null, $checkPrice = true)

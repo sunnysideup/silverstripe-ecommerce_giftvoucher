@@ -66,7 +66,7 @@ class GiftVoucherProductPageController extends ProductController
         }
     }
 
-    public function doaddnewpriceform($data, $form)
+    public function doaddnewpriceform(array $data, Form $form)
     {
         //check amount
         $amount = $this->parseFloat($data['Amount']);
@@ -149,13 +149,15 @@ class GiftVoucherProductPageController extends ProductController
      *
      * @return null|OrderItem
      */
-    protected function createOrderItem($amount, $description, $data = [])
+    protected function createOrderItem(float $amount, string $description, ?array $data = [])
     {
         $shoppingCart = ShoppingCart::singleton();
         /** @var OrderItem $orderItem */
         $orderItem = $shoppingCart->addBuyable($this->dataRecord);
-        $orderItem->setCustomCalculatedTotal($amount);
-        $orderItem->setCustomDescription($description);
+        if($orderItem) {
+            $orderItem->setCustomCalculatedTotal($amount);
+            $orderItem->setCustomDescription($description);
+        }
 
         return $orderItem;
     }
