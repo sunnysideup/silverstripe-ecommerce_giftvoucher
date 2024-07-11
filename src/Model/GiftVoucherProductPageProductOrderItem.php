@@ -2,7 +2,6 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher\Model;
 
-use SilverStripe\Core\Convert;
 use Sunnysideup\Ecommerce\Model\ProductOrderItem;
 
 /**
