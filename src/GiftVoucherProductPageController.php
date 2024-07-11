@@ -10,6 +10,7 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use Sunnysideup\Ecommerce\Api\ShoppingCart;
+use Sunnysideup\Ecommerce\Interfaces\BuyableModel;
 use Sunnysideup\Ecommerce\Model\OrderItem;
 use Sunnysideup\Ecommerce\Pages\CheckoutPage;
 use Sunnysideup\Ecommerce\Pages\ProductController;
@@ -152,8 +153,10 @@ class GiftVoucherProductPageController extends ProductController
     protected function createOrderItem(float $amount, string $description, ?array $data = [])
     {
         $shoppingCart = ShoppingCart::singleton();
+        /** @var BuyableModel|GiftVoucherProductPage $record  */
+        $record = $this->dataRecord;
         /** @var OrderItem $orderItem */
-        $orderItem = $shoppingCart->addBuyable($this->dataRecord);
+        $orderItem = $shoppingCart->addBuyable($record);
         if($orderItem) {
             $orderItem->setCustomCalculatedTotal($amount);
             $orderItem->setCustomDescription($description);
