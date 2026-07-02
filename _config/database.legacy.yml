@@ -1,4 +1,5 @@
-SilverStripe\ORM\DatabaseAdmin:
+
+SilverStripe\Dev\DbBuild:
   classname_value_remapping:
     GiftVoucherProductPage_Controller: Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPageController
     GiftVoucherProductPage: Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage

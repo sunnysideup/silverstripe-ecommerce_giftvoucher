@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher;
 
+use Override;
 use SilverStripe\CMS\Model\SiteTree;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
@@ -12,7 +13,6 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\Security\Member;
 use Sunnysideup\Ecommerce\Pages\Product;
 use Sunnysideup\EcommerceGiftvoucher\Model\GiftVoucherProductPageProductOrderItem;
-use Page;
 
 /**
  * Class \Sunnysideup\EcommerceGiftvoucher\GiftVoucherProductPage
@@ -34,7 +34,130 @@ class GiftVoucherProductPage extends Product
      */
     protected $defaultClassNameForOrderItem = GiftVoucherProductPageProductOrderItem::class;
 
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            // fields added manually below
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+
+            // settings field
+            'AlwaysHideFromSearchAndMenus',
+
+            // from product - to be removed
+            'Weight',
+            'Price',
+            'Model',
+            'HasPhysicalDispatch',
+            'FeaturedProduct',
+        ],
+    ];
+
     private static $table_name = 'GiftVoucherProductPage';
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            // fields added manually
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+
+            // settings field
+            'AlwaysHideFromSearchAndMenus',
+
+            // from product
+            'Weight',
+            'Price',
+            'Model',
+            'HasPhysicalDispatch',
+            'FeaturedProduct',
+        ],
+    ];
+
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+            'Weight',
+            'Price',
+            'Model',
+            'HasPhysicalDispatch',
+            'FeaturedProduct',
+        ],
+    ];
+
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+            'Price',
+            'Weight',
+            'Model',
+            'HasPhysicalDispatch',
+            'FeaturedProduct',
+        ],
+    ];
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+            'Price',
+            'Weight',
+            'Model',
+            'HasPhysicalDispatch',
+            'FeaturedProduct',
+            'AlwaysHideFromSearchAndMenus',
+        ],
+    ];
+
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+            'Price',
+            'Weight',
+            'Model',
+            'HasPhysicalDispatch',
+            'FeaturedProduct',
+        ],
+    ];
 
     private static $db = [
         'DescriptionFieldLabel' => 'Varchar(255)',
@@ -81,11 +204,26 @@ class GiftVoucherProductPage extends Product
         'DefaultDescription' => 'e.g. generic product, this field is optional',
     ];
 
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+            'AlwaysHideFromSearchAndMenus',
+        ],
+        'ignoreRelations' => [],
+    ];
+
     private static $singular_name = 'Any Price Product';
 
     private static $plural_name = 'Any Price Products';
 
-    private static $icon = 'sunnysideup/ecommerce_giftvoucher: client/images/treeicons/GiftVoucherProductPage-file.gif';
+    private static $cms_icon = 'sunnysideup/ecommerce_giftvoucher: client/images/treeicons/GiftVoucherProductPage-file.gif';
 
     /**
      * @config
@@ -93,28 +231,33 @@ class GiftVoucherProductPage extends Product
      * @var string Description of the class functionality, typically shown to a user
      *             when selecting which page type to create. Translated through {@link provideI18nEntities()}.
      */
-    private static $description = 'Generic product that can be used to allow customers to choose a specific amount to pay.';
+    private static $class_description = 'Generic product that can be used to allow customers to choose a specific amount to pay.';
 
+    #[Override]
     public function i18n_singular_name()
     {
         return _t('GiftVoucherProductPage.GIFT_VOUCHER_PRODUCT_PAGE', 'Gift Voucher Page');
     }
 
-    public function i18n_plural_name()
+    #[Override]
+    public function plural_name()
     {
         return _t('GiftVoucherProductPage.GIFT_VOUCHER_PRODUCT_PAGES', 'Gift Voucher Pages');
     }
 
+    #[Override]
     public function canCreate($member = null, $context = [])
     {
         return !(bool) SiteTree::get()->filter(['ClassName' => static::class])->exists();
     }
 
+    #[Override]
     public function canPurchase(Member $member = null, $checkPrice = true)
     {
         return parent::canPurchase($member, false);
     }
 
+    #[Override]
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -140,28 +283,11 @@ class GiftVoucherProductPage extends Product
         if (!$this->CanSetDescription) {
             $fields->removeByName('DescriptionFieldLabel');
         }
-        // Standard product detail fields
-        $fields->removeFieldsFromTab(
-            'Root.Details',
-            [
-                'Weight',
-                'Price',
-                'Model',
-                'HasPhysicalDispatch',
-            ]
-        );
-
-        // Flags for this product which affect it's behaviour on the site
-        $fields->removeFieldsFromTab(
-            'Root.Details',
-            [
-                'FeaturedProduct',
-            ]
-        );
 
         return $fields;
     }
 
+    #[Override]
     public function getSettingsFields()
     {
         $fields = parent::getSettingsFields();
@@ -172,14 +298,37 @@ class GiftVoucherProductPage extends Product
             ],
             'Visibility'
         );
+        $fields->removeByName('ShowInMenus');
+        $fields->removeByName('ShowInSearch');
         if ($this->AlwaysHideFromSearchAndMenus) {
-            $fields->removeByName('ShowInMenus');
-            $fields->removeByName('ShowInSearch');
+            $this->ShowInMenus = false;
+            $this->ShowInSearch = false;
         }
+
         return $fields;
     }
+    private static $table_name = 'GiftVoucherProductPage';
 
-    public function onBeforeWrite()
+    private static array $scaffold_cms_fields_settings = [
+        'ignoreFields' => [
+            'DescriptionFieldLabel',
+            'AmountFieldLabel',
+            'ActionFieldLabel',
+            'MinimumAmount',
+            'MaximumAmount',
+            'RecommendedAmounts',
+            'CanSetDescription',
+            'DefaultDescription',
+            'Weight',
+            'Price',
+            'Model',
+            'HasPhysicalDispatch',
+            'FeaturedProduct',
+        ],
+    ];
+
+    #[Override]
+    protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
         if ($this->AlwaysHideFromSearchAndMenus) {

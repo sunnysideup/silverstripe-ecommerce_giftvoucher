@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\EcommerceGiftvoucher\Model;
 
+use Override;
 use Sunnysideup\Ecommerce\Model\ProductOrderItem;
 
 /**
@@ -55,21 +56,25 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
      */
     private static $plural_name = 'Orders for Gift Item';
 
+    #[Override]
     public function i18n_singular_name()
     {
         return $this->Config()->get('singular_name');
     }
 
-    public function i18n_plural_name()
+    #[Override]
+    public function plural_name()
     {
         return $this->Config()->get('plural_name');
     }
 
+    #[Override]
     public function getUnitPrice($recalculate = false)
     {
         return $this->ValueSet;
     }
 
+    #[Override]
     public function getTotal($recalculate = false)
     {
         return $this->ValueSet * $this->Quantity;
@@ -110,14 +115,17 @@ class GiftVoucherProductPageProductOrderItem extends ProductOrderItem
         return $this;
     }
 
+    #[Override]
     public function getTableSubTitle(): string
     {
         if ($this->priceHasBeenFixed()) {
             return (string) $this->TableSubTitleFixed;
         }
+
         return (string) $this->Description;
     }
 
+    #[Override]
     protected function onBeforeWrite()
     {
         parent::onBeforeWrite();
