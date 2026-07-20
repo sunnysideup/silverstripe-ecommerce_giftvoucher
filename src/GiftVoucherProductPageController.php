@@ -204,4 +204,10 @@ class GiftVoucherProductPageController extends ProductController
     {
         return preg_replace('/[^a-zA-Z0-9 ]/', '', $text);
     }
+
+    public function canCachePage(): bool
+    {
+        return false;
+    }
+
 }
